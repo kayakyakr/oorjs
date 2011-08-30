@@ -19,7 +19,7 @@ javascript.
   1. 0.7 - Generators
   1. 0.8 - Packaged/standalone commands
   1. 0.9 - Package manager
-  1. 0.10 - Associations
+  1. 0.10 - Model Associations
 
 
 ## Class Structure
