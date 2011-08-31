@@ -1,11 +1,11 @@
 
-require('./class');
+require('class');
 
 var cls = Class(function(){},{
   inh: function(){
     return 'inherited';
   }
-})
+}).extend(require('events').EventEmitter);
 
 module.exports = Class(cls, {
   constructor: function(){
