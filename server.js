@@ -1,23 +1,23 @@
 
 var http = require('http');
-var url = require('url');
+require('./node_modules/class');
+require('./node_modules/util')
 
 /**
  * Require utilities built into goorjs
  */
-require('class');
-var mime = require('mime');
-var path_interpreter = require('path_interpreter');
+
+var Goorjs = require('./node_modules/goor.js');
 
 server = http.createServer(function(req, res){
-  path_interpreter.interpret_path(url.parse(req.url), function(path_data){
-    res.writeHead(200, {});
-    res.end(JSON.stringify(path_data) );
-  });
+  var goorjs = new Goorjs({server: server, request: req, response: res});
+  goorjs.handle_request();
 });
 
-path_interpreter.set_server(server);
-
 server.listen(3000, "127.0.0.1");
+
+process.on('uncaughtException', function(exception){
+  console.log(exception.toString());
+});
 
 console.log('Opened server on 127.0.0.1:3000')
